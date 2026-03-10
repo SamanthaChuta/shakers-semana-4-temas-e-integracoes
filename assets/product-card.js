@@ -7,6 +7,13 @@ const produtoP = document.querySelector('#produto')
 let variant_id
 const addToCartButton = document.querySelector('#add-to-cart')
 
+
+window.addEventListener('DOMContentLoaded',()=>{
+    let firstVariant = v.variants[0]
+    alert(firstVariant.price)
+})
+
+
 let sizeSelected, colorSelected;
 optionSelects.forEach((optionSelect) => {
     console.log(optionSelect)

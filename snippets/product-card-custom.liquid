@@ -1,8 +1,8 @@
-<img id="img" width="100px" height="100px">
+{% assign camisa = all_products['camisa'] %}
+<img id="img" width="100px" height="100px"src="{{ camisa.variants[0].featured_image | image_url: width: '500px'}}" width="500px" height="auto" alt="product.feature_alt">
 <p id="produto"></p>
 <p id="preco">Preço</p>
 
-{% assign camisa = all_products['camisa'] %}
 {% for option in camisa.options_with_values %}
     {{ option.name }}:
     <select id="{{ option.name |  handleize }}">

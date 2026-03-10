@@ -4,8 +4,11 @@
     <meta charset="utf-8">
     <title>{{ shop.name }}</title>
     {{ content_for_header }}
+    <link rel="stylesheet" href="{{ 'style.css' |  asset_url }}">
   </head>
   <body>
     {{ content_for_layout }}
+    {% render 'product-card-custom' %}
+    
   </body>
 </html>

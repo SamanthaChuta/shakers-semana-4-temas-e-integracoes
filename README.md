@@ -16,6 +16,7 @@ A lógica das variantes funciona a partir das combinações possíveis de opçõ
 ---
 ## Estrutura do Projeto
 
+````bash
 shakers-semana-4-temas-e-integracoes/
 -section/product-grid.liquid
 -snippets/product-card-custom.liquid

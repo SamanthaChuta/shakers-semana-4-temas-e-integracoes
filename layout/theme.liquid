@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ shop.name }}</title>
+    {{ content_for_header }}
+    <link rel="stylesheet" href="{{ 'style.css' |  asset_url }}">
+  </head>
+  <body>
+    {{ content_for_layout }}
+    
+    <script src="{{ 'product-card.js' |  asset_url }}" async></script>
+  </body>
+</html>

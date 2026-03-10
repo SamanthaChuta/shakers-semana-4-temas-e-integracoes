@@ -1,0 +1,59 @@
+{{ 'metaobject-slider.js' | asset_url |  script_tag }}
+{{ 'metaobject-slider.css' | asset_url |  script_tag }}
+
+{% assign product_handle = section.settings.product %}
+{% assign product = all_products[product_handle] %}
+
+
+{% assign list_product = product.metafields.custom.produtos_relacionados.value %}
+
+{% if list_product %}
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
+<link rel="stylesheet" href="../assets/metaobject-slider.css">
+
+    <div class="swiper">
+
+        <div class="swiper-wrapper">
+            {% for product_with_banner in list_product %}
+                {% assign banner = product_with_banner.imagem %}
+                {% assign product_b_handle = product_with_banner.produto %}
+                {% assign product_b = all_products[product_b_handle] %}
+                <div class="swiper-slide">
+           <a href="{{ product_b.url }}">
+            <img src="{{banner |  image_url: width: '300px' }}" width="300px" height="auto">
+            <h2>{{ product_b.title }}</h2>
+            </a>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+        
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        
+        <div class="swiper-scrollbar"></div>
+        </div>
+        
+        
+        <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+    {% endif %}
+
+    {% schema  %}
+{
+    "name": "Desafio Slider",
+    "settings": [
+        {"type": "product",
+        "id": "product",
+        "label": "Product"
+
+    }],
+    "presets": []
+
+}
+
+
+{% endschema %}

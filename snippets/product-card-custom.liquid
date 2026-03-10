@@ -1,0 +1,25 @@
+{% assign camisa = all_products['camisa'] %}
+<img id="img" width="100px" height="100px"src="{{ camisa.variants[0].featured_image | image_url: width: '500px'}}" width="500px" height="auto" alt="product.feature_alt">
+<p id="produto"></p>
+<p id="preco">Preço</p>
+
+{% for option in camisa.options_with_values %}
+    {{ option.name }}:
+    <select id="{{ option.name |  handleize }}">
+    {% for value in option.values %}
+        <option value="{{ value }}"> {{ value }}</option>
+    {% endfor %}
+    </select>
+<br>
+{% endfor %}
+
+
+<button id="add-to-cart" class="add-to-cart">Adicionar ao carrinho</button>
+
+<script type="application/json" id="camisas">
+    {{ camisa | json }}
+
+    
+</script>
+
+<script src="{{ 'product-card.js' |  asset_url }}" async></script>

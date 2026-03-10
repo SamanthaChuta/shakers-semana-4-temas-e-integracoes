@@ -1,0 +1,68 @@
+<h1>{{page.title}}</h1>
+<p>{{page.content}}</p>
+
+{% assign product = section.settings.locao-principal %}
+{% if product and product.id%}
+    
+    <div class="product">
+        <p><b> Produto em Destaque </b>{{product.title}}</p>
+        <img src="{{product.featured_image.src |  image_url: width: '500px'}}" width="500px" height="auto" alt="product.feature_alt">
+        <p><b>Preço </b>{{product.price |  money}}</p>
+    </div>
+{% endif %}
+
+{% assign collection = section.settings.colecoes-do-verao %}
+
+<h2>{{collection.title}}</h2>
+<h3>{{collection.description}}</h3>
+
+<div class="products">
+    {% for product in collection.products %}
+    <div class="product">
+        <p><b>Loção: </b> {{product.title}}</p>  
+        <img src="{{product.featured_image.src |  image_url: width: '250px'}}" width="250px" height="150px" alt="product.feature_alt">
+         <p><b>Preço do Produto </b>{{product.price |  money}}</p> 
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+.products {
+    display: flex;
+    gap: 16px;
+    align-self: center;
+    justify-self: center;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    justify-self: center;
+}
+
+</style>
+
+{% schema %}
+{
+    "name": "Lotion Locoes do Verao",
+    "settings": [
+        {
+            "type": "product",
+            "id": "locao-principal",
+            "label": "Loção Principal"
+        },
+        {
+            "type": "collection",
+            "id": "colecoes-do-verao",
+            "label": "Coleções do Verão"
+        }
+        
+        ]
+}
+{% endschema %}
